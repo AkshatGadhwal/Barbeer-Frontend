@@ -11,6 +11,7 @@ import {
 import LoginSignup from "./screens/SignUpScreen"
 import HomeScreen from "./screens/HomeScreen"
 import Details from "./screens/UserDetailsScreen"
+import Shops from "./screens/Shops"
 
 const Stack = createStackNavigator();
 
@@ -29,6 +30,10 @@ export default function App() {
         <Stack.Screen
           name="Details"
           component={Details}
+        />
+        <Stack.Screen
+          name="Shops"
+          component={Shops}
         />
       </Stack.Navigator>
     </NavigationContainer>

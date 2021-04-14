@@ -15,7 +15,7 @@ export default function SignUpScreen(props) {
   const [password, setPassword] = useState("");
 
   const sendCredSignup= async (props)=>{
-     fetch("http://10.0.2.2:3000/signup",{
+     fetch("http://192.168.43.190:3000/signup",{
        method:"POST",
        headers: {
         'Content-Type': 'application/json'
@@ -37,7 +37,7 @@ export default function SignUpScreen(props) {
   }
 
   const sendCredLogin= async (props)=>{
-    fetch("http://10.0.2.2:3000/signin",{
+    fetch("http://192.168.43.190:3000/signin",{
       method:"POST",
       headers: {
        'Content-Type': 'application/json',

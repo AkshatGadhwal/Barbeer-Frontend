@@ -11,7 +11,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 
 async function getUser(props) {
   const token = await AsyncStorage.getItem('token');
-  fetch("http://10.0.2.2:3000/userData",{
+  fetch("http://192.168.43.190:3000/userData",{
        method:"GET",
        headers: {
         'Content-Type': 'application/json',
@@ -21,6 +21,21 @@ async function getUser(props) {
      .then(res=>res.json())
      .then(async (data)=>{    
         props.navigation.navigate("Details",{user:data});
+     })
+}
+
+async function getShops(props) {
+  const token = await AsyncStorage.getItem('token');
+  fetch("http://192.168.43.190:3000/shopsData",{
+       method:"GET",
+       headers: {
+        'Content-Type': 'application/json',
+        'authorization': 'Bearer ' + token
+      }
+     })
+     .then(res=>res.json())
+     .then(async (data)=>{    
+        props.navigation.navigate("Shops",{shops:data});
      })
 }
 
@@ -35,10 +50,14 @@ export default function HomeScreen(props) {
     <View style={styles.container}>
       
       <StatusBar style="auto" />
-      <Text>{props.route.params.message}</Text>
+      <Text>You are at Home Screen</Text>
       <TouchableOpacity style={styles.loginBtn} 
       onPress={() => getUser(props)}>
         <Text>Details</Text>
+      </TouchableOpacity>
+      <TouchableOpacity style={styles.loginBtn} 
+      onPress={() => getShops(props)}>
+        <Text>Shops list</Text>
       </TouchableOpacity>
       <TouchableOpacity style={styles.loginBtn} 
       onPress={() => LogoutUser(props)}>
